@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE BRO CODZ CAFE</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ font-family:Arial,sans-serif;
+ background:#100e0b;color:#fff;
+}
+header{
+ background:#080706;padding:18px 15px;
+ display:flex;justify-content:space-between;
+ align-items:center;flex-wrap:wrap;
+ border-bottom:1px solid #b98b43;
+ position:sticky;top:0;z-index:10;
+}
+.logo{color:#e7b75d;font-size:21px;font-weight:bold}
+nav a{color:white;text-decoration:none;margin:6px;font-size:13px}
+.hero{
+ text-align:center;padding:75px 15px;
+ background:linear-gradient(135deg,#24170d,#090807);
+}
+.hero h1{font-size:34px;color:#e8b85f;margin:18px 0}
+.hero p{color:#ddd;line-height:1.8}
+.gold{color:#e8b85f}
+.btn{
+ display:inline-block;padding:12px 20px;
+ background:#d99c43;color:#160e05;
+ border:0;border-radius:6px;
+ text-decoration:none;font-weight:bold;
+ cursor:pointer;margin:7px;
+}
+.section{max-width:1100px;margin:auto;padding:35px 15px}
+.section h2{text-align:center;color:#e8b85f;margin-bottom:23px}
+.info{
+ background:#1b1712;border:1px solid #4b3620;
+ padding:20px;border-radius:10px;line-height:2;
+ margin:12px 0;
+}
+.search{
+ width:100%;padding:14px;background:#201a13;
+ border:1px solid #70502b;color:white;
+ border-radius:7px;margin-bottom:15px;
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{
+ padding:9px 13px;background:#211a12;
+ color:white;border:1px solid #b98b43;
+ border-radius:20px;cursor:pointer
+}
+.filters button.active{background:#d99c43;color:black}
+.products{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+ gap:14px;
+}
+.card{
+ background:#1b1712;border:1px solid #4b3620;
+ border-radius:10px;padding:15px;text-align:center;
+}
+.food-icon{font-size:45px;margin:12px}
+.card h3{font-size:16px;margin:8px}
+.card p{font-size:12px;color:#c5b8a4}
+.price{color:#efbd62;font-size:20px;margin:12px}
+.card button{width:100%}
+.cart-item{
+ display:flex;justify-content:space-between;
+ gap:10px;padding:12px 0;
+ border-bottom:1px solid #51402d;
+}
+input,textarea{
+ width:100%;padding:13px;margin:8px 0;
+ background:#211a12;color:white;
+ border:1px solid #70502b;border-radius:6px;
+}
+footer{
+ background:#080706;padding:25px;
+ text-align:center;line-height:2;color:#c5b8a4;
+ border-top:1px solid #4b3620;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">☕ THE BRO CODZ CAFE</div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#menu">Menu</a>
+  <a href="#cart">Cart 🛒</a>
+  <a href="#contact">Contact</a>
+ </nav>
+</header>
+
+<section class="hero" id="home">
+ <p class="gold">WELCOME TO OUR CAFE</p>
+ <h1>THE BRO CODZ CAFE</h1>
+ <p>Good Food • Good Mood • Great Moments</p>
+ <p>Fresh Taste, Happy Moments!</p>
+ <a href="#menu" class="btn">EXPLORE MENU</a>
+</section>
+
+<section class="section">
+ <div class="info" style="text-align:center">
+  <h2>☕ Welcome Food Lovers!</h2>
+  <p>Enjoy delicious food and refreshing drinks.</p>
+  <p class="gold">Open Daily: 9:00 AM – 10:00 PM</p>
+ </div>
+</section>
+
+<section class="section" id="menu">
+ <h2>🍽️ OUR FOOD MENU</h2>
+ <input class="search" id="search"
+ placeholder="Search food...">
+ <div class="filters" id="filters"></div>
+ <div class="products" id="products"></div>
+</section>
+
+<section class="section" id="cart">
+ <h2>🛒 YOUR CART</h2>
+ <div class="info">
+  <div id="cartItems">Your cart is empty.</div>
+  <h3 id="total" class="gold">Total: ₹0</h3>
+  <button class="btn" onclick="checkout()">ORDER ON WHATSAPP</button>
+  <button class="btn" onclick="clearCart()">CLEAR CART</button>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <h2>📍 CONTACT & LOCATION</h2>
+ <div class="info">
+  <p><b>Cafe:</b> THE BRO CODZ CAFE</p>
+  <p><b>Owner:</b> Sachin Khari</p>
+  <p><b>Address:</b> VGI College, GT Road, Dadari, NH-91, Noida, UP 203207</p>
+  <p><b>Delivery:</b> VGI College and nearby areas</p>
+  <p><b>Timing:</b> 9:00 AM – 10:00 PM</p>
+  <p><b>Phone:</b> 8630545489</p>
+  <a class="btn" href="https://wa.me/918630545489">
+   CONTACT ON WHATSAPP
+  </a>
+  <a class="btn" target="_blank"
+  href="https://www.google.com/maps/search/?api=1&query=VGI+College+Dadari+Noida+UP">
+   VIEW LOCATION
+  </a>
+ </div>
+</section>
+
+<footer>
+ <h2 class="gold">THE BRO CODZ CAFE</h2>
+ <p>Good Food, Great Taste ❤️</p>
+ <p>Owner: Sachin Khari</p>
+ <p>© <span id="year"></span> All Rights Reserved</p>
+</footer>
+
+<script>
+
+// WHATSAPP NUMBER
+const whatsapp="918630545489";
+
+// MENU ITEMS AND DEMO PRICES
+const foods=[
+ {id:1,name:"Chilli Potato",price:80,cat:"Snacks",icon:"🍟"},
+ {id:2,name:"Manchurian",price:80,cat:"Snacks",icon:"🥘"},
+ {id:3,name:"Bread Pakoda",price:20,cat:"Snacks",icon:"🥪"},
+ {id:4,name:"Samosa",price:15,cat:"Snacks",icon:"🥟"},
+ {id:5,name:"Khasta Kachori",price:20,cat:"Snacks",icon:"🥯"},
+ {id:6,name:"French Fries",price:60,cat:"Snacks",icon:"🍟"},
+ {id:7,name:"Maggi",price:40,cat:"Noodles",icon:"🍜"},
+ {id:8,name:"Chowmein",price:60,cat:"Noodles",icon:"🍝"},
+ {id:9,name:"Veg Roll",price:50,cat:"Rolls",icon:"🌯"},
+ {id:10,name:"Egg Roll",price:60,cat:"Rolls",icon:"🌯"},
+ {id:11,name:"Chilli Paneer",price:100,cat:"Snacks",icon:"🧀"},
+ {id:12,name:"Mix Sauce Pasta",price:90,cat:"Snacks",icon:"🍝"},
+ {id:13,name:"Aloo Paratha",price:40,cat:"Paratha",icon:"🫓"},
+ {id:14,name:"Aloo Pizza Paratha",price:70,cat:"Paratha",icon:"🍕"},
+ {id:15,name:"Paneer Paratha",price:60,cat:"Paratha",icon:"🫓"},
+ {id:16,name:"Cold Coffee",price:60,cat:"Drinks",icon:"🥤"},
+ {id:17,name:"Cold Drink",price:40,cat:"Drinks",icon:"🥤"},
+ {id:18,name:"Tea",price:15,cat:"Drinks",icon:"☕"},
+ {id:19,name:"Coffee",price:25,cat:"Drinks",icon:"☕"},
+ {id:20,name:"Veg Fried Rice",price:80,cat:"Rice",icon:"🍚"},
+ {id:21,name:"Egg Fried Rice",price:100,cat:"Rice",icon:"🍚"},
+ {id:22,name:"Paneer Fried Rice",price:110,cat:"Rice",icon:"🍛"}
+];
+
+let cart=[];
+let active="All";
+
+function showFilters(){
+ let cats=["All",...new Set(foods.map(f=>f.cat))];
+ document.getElementById("filters").innerHTML=cats.map(c=>
+ `<button class="${active===c?'active':''}"
+ onclick="setCategory('${c}')">${c}</button>`
+ ).join("");
+}
+
+function setCategory(c){
+ active=c;
+ showFilters();
+ showFoods();
+}
+
+function showFoods(){
+ let q=document.getElementById("search").value.toLowerCase();
+ let list=foods.filter(f=>
+ (active==="All"||f.cat===active)&&
+ f.name.toLowerCase().includes(q)
+ );
+ document.getElementById("products").innerHTML=
+ list.map(f=>`
+ <div class="card">
+ <div class="food-icon">${f.icon}</div>
+ <h3>${f.name}</h3>
+ <p>${f.cat}</p>
+ <div class="price">₹${f.price}</div>
+ <button class="btn" onclick="addCart(${f.id})">
+ ADD TO CART
+ </button>
+ </div>`).join("")||"<p>No food found.</p>";
+}
+
+function addCart(id){
+ let food=foods.find(f=>f.id===id);
+ let item=cart.find(f=>f.id===id);
+ if(item)item.qty++;
+ else cart.push({...food,qty:1});
+ showCart();
+ alert(food.name+" added to cart!");
+}
+
+function showCart(){
+ let html="";
+ cart.forEach(f=>{
+ html+=`<div class="cart-item">
+ <span>${f.icon} ${f.name} x ${f.qty}</span>
+ <span>₹${f.price*f.qty}
+ <button onclick="removeCart(${f.id})">❌</button>
+ </span></div>`;
+ });
+ document.getElementById("cartItems").innerHTML=
+ html||"Your cart is empty.";
+ let total=cart.reduce((s,f)=>s+f.price*f.qty,0);
+ document.getElementById("total").textContent="Total: ₹"+total;
+}
+
+function removeCart(id){
+ cart=cart.filter(f=>f.id!==id);
+ showCart();
+}
+
+function clearCart(){
+ cart=[];
+ showCart();
+}
+
+function checkout(){
+ if(cart.length===0){
+ alert("Please add food to cart!");
+ return;
+ }
+
+ let customer=prompt("Enter your name:");
+ if(!customer)return;
+
+ let address=prompt("Enter your delivery location:");
+ if(!address)return;
+
+ let msg=`Hello THE BRO CODZ CAFE!
+Name: ${customer}
+Delivery Location: ${address}
+My Order:`;
+
+ cart.forEach(f=>{
+ msg+=`\n${f.name} x ${f.qty} = ₹${f.price*f.qty}`;
+ });
+
+ let total=cart.reduce((s,f)=>s+f.price*f.qty,0);
+ msg+=`\nTotal: ₹${total}`;
+ msg+="\nPlease confirm my order and delivery.";
+
+ window.open(
+ "https://wa.me/"+whatsapp+"?text="+encodeURIComponent(msg),
+ "_blank"
+ );
+}
+
+document.getElementById("search").addEventListener("input",showFoods);
+document.getElementById("year").textContent=new Date().getFullYear();
+
+showFilters();
+showFoods();
+showCart();
+
+</script>
+</body>
+</html>
